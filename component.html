@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+
+	<style type="text/css">
+		body{
+			padding:10px 20px;
+		}
+		.siteBlock{
+			display: inline-block;
+			border: 1px solid rgba(150,150,150,1);
+			width: 200px;
+			background-color: #FFF;
+			margin:10px;
+		}
+
+		.siteBlock-img{
+			text-align: center;
+			padding: 10px 20px;
+		}
+
+		.siteBlock-img img{
+			width: 80%;
+		}
+
+		.siteBlock-title{
+			color: red;
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+			margin:10px 0;
+		}
+
+		.siteBlock-Desc{
+			font-size: 12px;
+			text-align: center;
+			margin:10px 0px;
+		}
+
+		.siteBlock-url{
+			font-size: 12px;
+			font-style: italic;
+			text-align: center;
+			margin:10px 0px;
+		}
+
+	</style>
+</head>
+<body>
+	<h4>组件</h4>
+	<p>
+		将通用的代码封装成可共用的东西，避免重复编写。这就是组件。
+		<br />
+		比如，上一个的我收集的网站展示。	
+	</p>
+	<div>想要的效果</div>
+
+	<div>
+		<div class='siteBlock'>
+			<div class='siteBlock-img'>
+				<img src="https://www.cnblogs.com/images/logo_small.gif">
+			</div>
+			<div class='siteBlock-title'>
+				博客园
+			</div>
+			<div class='siteBlock-Desc'>
+				程序员的一个写博客的网站
+			</div>
+			<div class='siteBlock-url'>
+				<a href="http://www.cnblogs.com">http://www.cnblogs.com</a>
+			</div>
+		</div>
+		<div class='siteBlock'>	
+			<div class='siteBlock-img'>
+				<img src="http://www.csdn.net/css/logo.png">
+			</div>
+			<div class='siteBlock-title'>
+				CSDN
+			</div>
+			<div class='siteBlock-Desc'>
+				全球最大中文IT社区
+			</div>
+			<div class='siteBlock-url'>
+				<a href="http://www.csdn.net">http://www.csdn.net</a>
+			</div>
+		</div>
+	</div>
+
+	每一个部分的代码如下：
+	<xmp>
+<div class='siteBlock'>	
+	<div class='siteBlock-img'>
+		<img src="http://www.csdn.net/css/logo.png">
+	</div>
+	<div class='siteBlock-title'>
+		CSDN
+	</div>
+	<div class='siteBlock-Desc'>
+		全球最大中文IT社区
+	</div>
+	<div class='siteBlock-url'>
+		<a href="http://www.csdn.net">http://www.csdn.net</a>
+	</div>
+</div>
+	</xmp>
+
+	<div>***********************************************************************</div>	
+	<h2>实现</h2>
+
+	<div id='container'></div>
+
+	<h2>代码</h2>
+
+	<xmp>
+		<div id='container'></div>		
+	</xmp>
+	<xmp>
+		<script type="text/babel">
+
+		var SiteBlock = React.createClass({
+			render:function(){
+				return <div className='siteBlock'>	
+							<div className='siteBlock-img'>
+								<img src={this.props.logo} />
+							</div>
+							<div className='siteBlock-title'>
+								{this.props.title}
+							</div>
+							<div className='siteBlock-Desc'>
+								{this.props.desc}
+							</div>
+							<div className='siteBlock-url'>
+								<a href={this.props.url}>{this.props.url}</a>
+							</div>
+						</div>;
+			}
+		});
+
+		var arr = new Array();
+		arr.push({name:'博客园',url:'http://www.cnblogs/com'});
+		arr.push({name:'CSDN',url:'http://www.csdn.net'});
+		arr.push({name:'github',url:'http://www.github.com'});
+
+		ReactDOM.render(
+			<div>
+			{
+				arr.map(function(site){ 
+					return <SiteBlock logo="http://www.csdn.net/css/logo.png" title={site.name} desc="描述" url={site.url} />			
+				})
+			}
+			</div>
+			,
+			document.getElementById('container')
+		);
+
+	</script>
+	</xmp>
+
+	<div>***********************************************************************</div>	
+	<h2>注意</h2>
+	<ul>
+		<li>class属性要写成className，for属性要写成htmlFor，否则会丢失</li>
+		<li>绑定属性时，不能加引号，比如：title='{site.name}'，则会当作值来显示，正确的要去掉引号：title={site.name} </li>
+		<li>只能有一个最外层标签</li>
+		<li>定义的组件名字，首字母必须大写，比如SiteBlock</li>		
+	</ul>
+	<h2>问题</h2>
+	<p>
+		Q：添加的class没有了？
+		<br />
+		A：要使用className来代替class
+	</p>
+
+
+</body>
+
+	<script type="text/babel">
+
+		var SiteBlock = React.createClass({
+			render:function(){
+				return <div className='siteBlock'>	
+							<div className='siteBlock-img'>
+								<img src={this.props.logo} />
+							</div>
+							<div className='siteBlock-title'>
+								{this.props.title}
+							</div>
+							<div className='siteBlock-Desc'>
+								{this.props.desc}
+							</div>
+							<div className='siteBlock-url'>
+								<a href={this.props.url}>{this.props.url}</a>
+							</div>
+						</div>;
+			}
+		});
+
+		var arr = new Array();
+		arr.push({name:'博客园',url:'http://www.cnblogs/com'});
+		arr.push({name:'CSDN',url:'http://www.csdn.net'});
+		arr.push({name:'github',url:'http://www.github.com'});
+
+		ReactDOM.render(
+			<div>
+			{
+				arr.map(function(site){ 
+					return <SiteBlock logo="http://www.csdn.net/css/logo.png" title={site.name} desc="描述" url={site.url} />			
+				})
+			}
+			</div>
+			,
+			document.getElementById('container')
+		);
+
+	</script>
+
+</html>

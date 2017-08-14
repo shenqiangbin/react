@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+	<style type="text/css">
+		table{
+			text-align: left;		
+		}
+	</style>
+</head>
+<body>
+	<h2>React练习</h2>
+	<p>基于 <a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target='_blank'>http://www.ruanyifeng.com/blog/2015/03/react.html</a> 的练习</p>
+	<p>
+		<div id="mysite"></div>
+	</p>
+</body>
+</html>
+
+<script type="text/babel">
+	var arr = new Array();
+	arr.push( { page: 'helloworld.html' , desc: '简单的渲染界面'} );
+	arr.push( { page: 'arrayDemo.html' , desc: '通过数组遍历来添加元素'} );	
+	arr.push( { page: 'component.html' , desc: '抽出公共html来构成组件，达到共用目的'} );	
+	arr.push( { page: 'component-para.html' , desc: '简单的渲染界面'} );	
+	arr.push( { page: 'component-ref.html' , desc: '简单的渲染界面'} );	
+	
+
+	var MyTable = React.createClass({
+		render:function(){
+			return (
+				<table>
+					<tbody>
+					<tr>
+						<th width='220'>页面</th>
+						<th>说明</th>					  
+					</tr>
+					{				
+				        this.props.data.map(function(html){
+				        	return (
+				        		<tr>
+				        			<td>
+				        				<a href={html.page} target='_blank'>{html.page}</a>
+				        			</td>
+				        			<td>
+				        				{html.desc}
+				        			</td>
+				        		</tr>
+				        	)
+				        })
+					}
+					</tbody>
+				</table>
+			)
+		}
+	});
+
+	ReactDOM.render(
+		<MyTable data={arr}/>
+		,
+		document.getElementById('mysite')
+	);
+</script>

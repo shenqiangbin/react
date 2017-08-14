@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+	通过ReactDom.render来为指定元素添加子元素。
+	<br />
+	<strong>注意：是更新指定容器的内容，不是追加，而是替换，旧的也会被干掉</strong>
+
+	<div id='example'></div>
+	<script type="text/babel">
+		ReactDOM.render(
+			<h1>hello,baby</h1>,
+			document.getElementById('example')
+		);
+	</script>
+
+	<div>*********************************************************</div>
+	<h2>代码</h2>
+	<xmp>
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<title></title>	
+			<script type="text/javascript" src='js/react.js'></script>
+			<script type="text/javascript" src='js/react-dom.js'></script>
+			<script type="text/javascript" src='js/browser.min.js'></script>
+		</head>
+		<body>
+
+			<div id='example'></div>
+			<script type="text/babel">
+				ReactDOM.render(
+					<h1>hello,baby</h1>,
+					document.getElementById('example')
+				);
+			</script>
+		</body>
+		</html>
+	</xmp>
+</body>
+</html>

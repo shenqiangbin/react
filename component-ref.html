@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+
+	<style type="text/css">
+		body{
+			padding:10px 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>通过ref来获取真是的dom节点</h2>
+	<p>
+		点击组件中的按钮时，获取组件中输入框的值。
+	</p>
+
+	<div>*******************************************************</div>
+	<h2>实现</h2>
+
+	<p>输入内容，点击按钮</p>
+
+	<div id="container"></div>
+
+	<h2></h2>
+	<div>*******************************************************</div>
+	<h2>代码</h2>
+	<xmp>
+		<script type="text/babel">
+			var MyForm = React.createClass({
+				handleClick:function(){
+					this.refs.username.focus();
+					var val = this.refs.username.value;
+					console.log(val);
+					alert(val);
+				},
+				render:function(){
+					return <div>
+						<input type="text" ref='username' />
+						<button type='button' onClick={this.handleClick}>输出内容</button>
+					</div>
+				},
+				
+			});
+
+			ReactDOM.render(
+				<MyForm />
+				,
+				document.getElementById('container')
+			);
+		</script>
+	</xmp>
+
+
+	<div>*******************************************************</div>
+	<h2>注意</h2>
+
+	<ol>
+		<li>onClick不要写成onclick，大小写要正确</li>
+	</ol>
+
+</body>
+
+	<script type="text/babel">
+		var MyForm = React.createClass({
+			handleClick:function(){
+				this.refs.username.focus();
+				var val = this.refs.username.value;
+				console.log(val);
+				alert(val);
+			},
+			render:function(){
+				return <div>
+					<input type="text" ref='username' />
+					<button type='button' onClick={this.handleClick}>输出内容</button>
+				</div>
+			},
+			
+		});
+
+		ReactDOM.render(
+			<MyForm />
+			,
+			document.getElementById('container')
+		);
+	</script>
+
+</html>

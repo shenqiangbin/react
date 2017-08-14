@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+	<p>
+		React可以遍历数组来展示数据
+		比如，有一组我平时收藏的网站，我需要展示出来。
+
+		<br/>
+
+		我想要的效果如下：
+
+		<div>
+			<div>
+				<div><strong>博客园</strong></div>
+				<p><a href="http://www.cnblogs.com">http://www.cnblogs.com</a></p>
+			</div>
+			<div>
+				<div><strong>CSDN</strong></div>
+				<p><a href="http://www.csdn.net">http://www.csdn.net</a></p>
+			</div>
+		</div>
+
+		<div>
+			***********************************************************************
+		</div>	
+		<h2>实现</h2>
+
+		<div id='container'></div>
+
+		<h4>代码</h4>
+
+		<xmp><div id='container'></div></xmp>
+		<xmp>
+<script type="text/babel">
+
+	var arr = new Array();
+	arr.push({name:'博客园',url:'http://www.cnblogs/com'});
+	arr.push({name:'CSDN',url:'http://www.csdn.net'});
+	arr.push({name:'github',url:'http://www.github.com'});
+
+	ReactDOM.render(			
+		<div>
+			{
+				arr.map(function(site){ 
+					return <div>
+						  <div><strong>{site.name}</strong></div>
+						  <p><a href="http://www.cnblogs.com">http://www.cnblogs.com</a></p>
+						</div>
+				})
+			}
+		</div>
+		,
+		document.getElementById('container')
+	);
+</script>
+		</xmp>
+
+		<div>
+			***********************************************************************
+		</div>	
+		<div>
+			<h4>问题</h4>
+			<p>
+				Q:browser.min.js:39 Uncaught SyntaxError: embedded: Expected corresponding JSX closing tag for &lt;div&gt; (15:29)
+				<br />
+				A:标签不对应。
+
+				<br />
+				<br />
+
+				Q: embedded: Unexpected token (19:5)
+				<br />
+				A:必需套一个div，且return后面的html不能隔行。想换行的话，也可以使用小括号。
+			</p>
+		</div>
+	</p>
+	
+</body>
+
+	<script type="text/babel">
+
+		var arr = new Array();
+		arr.push({name:'博客园',url:'http://www.cnblogs/com'});
+		arr.push({name:'CSDN',url:'http://www.csdn.net'});
+		arr.push({name:'github',url:'http://www.github.com'});
+
+		ReactDOM.render(			
+			<div>
+				{
+					arr.map(function(site){ 
+						return <div>
+									<div><strong>{site.name}</strong></div>
+									<p><a href="http://www.cnblogs.com">http://www.cnblogs.com</a></p>
+								</div>
+					})
+				}
+			</div>
+			,
+			document.getElementById('container')
+		);
+	</script>
+
+</html>

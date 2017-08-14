@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+
+	<style type="text/css">
+		body{
+			padding:10px 20px;
+		}
+	</style>
+
+</head>
+<body>
+	<h4>组件参数</h4>
+	<p>验证组件参数类型，必需</p>
+
+	<div>***********************************************************************</div>	
+	<h2>实现</h2>
+	<p>看控制台输出的内容</p>
+
+	<div id='container'></div>
+
+	<h2>代码</h2>
+
+	通过设置propTypes来实现。
+
+	<xmp>
+		var SiteBlock = React.createClass({
+			propTypes:{
+				title:React.PropTypes.string.isRequired,
+			},
+			render:function(){
+				return <div>{this.props.title}</div>
+			},			
+		});
+	</xmp>
+
+</body>
+
+	<script type="text/babel">
+		var SiteBlock = React.createClass({
+			propTypes:{
+				title:React.PropTypes.string.isRequired,
+			},
+			render:function(){
+				return <div>{this.props.title}</div>
+			},			
+		});
+
+		var data = null;
+
+		ReactDOM.render(
+			<SiteBlock title={data} />
+			,
+			document.getElementById('container')
+		);
+	</script>
+</html>
