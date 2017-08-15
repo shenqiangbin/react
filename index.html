@@ -9,15 +9,17 @@
 	<style type="text/css">
 		table{
 			text-align: left;		
-		}
+		}		
 	</style>
 </head>
 <body>
-	<h2>React练习</h2>
-	<p>基于 <a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target='_blank'>http://www.ruanyifeng.com/blog/2015/03/react.html</a> 的练习</p>
-	<p>
-		<div id="mysite"></div>
-	</p>
+	<div class='container'>
+		<h2>React练习</h2>
+		<p>基于 <a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target='_blank'>http://www.ruanyifeng.com/blog/2015/03/react.html</a> 的练习</p>
+		<p>
+			<div id="mysite"></div>
+		</p>
+	</div>
 </body>
 </html>
 
@@ -26,8 +28,8 @@
 	arr.push( { page: 'helloworld.html' , desc: '简单的渲染界面'} );
 	arr.push( { page: 'arrayDemo.html' , desc: '通过数组遍历来添加元素'} );	
 	arr.push( { page: 'component.html' , desc: '抽出公共html来构成组件，达到共用目的'} );	
-	arr.push( { page: 'component-para.html' , desc: '简单的渲染界面'} );	
-	arr.push( { page: 'component-ref.html' , desc: '简单的渲染界面'} );	
+	arr.push( { page: 'component-para.html' , desc: '指定组件的参数是需要什么样的类型，是否必需'} );	
+	arr.push( { page: 'component-ref.html' , desc: '组件内部获取'} );	
 	
 
 	var MyTable = React.createClass({
